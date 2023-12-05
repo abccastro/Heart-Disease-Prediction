@@ -14,27 +14,24 @@ Usage:
 """
 
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 
-def show_bar_graph(df, col_, figure_size, title, x_label, y_label, x_tick_rotation, bar_color=['darkblue']):
-    """
-    Function to plot the bar graph
-    """
-    # Extract the data for plotting
-    value_count_df = df.groupBy(col_).count().orderBy(col_)
-    values = value_count_df.select(col_).rdd.flatMap(lambda x: x).collect()
-    count_values = value_count_df.select("count").rdd.flatMap(lambda x: x).collect()
-
-    # Plotting the bar graph
+def show_bar_graph(df, col_, figure_size, title, x_label, y_label, x_tick_rotation=None, bar_color=None):
     plt.figure(figsize=figure_size)
-    plt.bar(values, count_values, color=bar_color)
-    plt.xlabel(x_label)
-    plt.ylabel(y_label)
-
-    if x_tick_rotation is not None:
-        plt.xticks(rotation=x_tick_rotation, ha='right')
+    
+    if bar_color is not None:
+        sns.countplot(x=col_, data=df, palette=bar_color)
+    else:
+        sns.countplot(x=col_, data=df)
     
     plt.title(title)
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    
+    if x_tick_rotation is not None:
+        plt.xticks(rotation=x_tick_rotation)
+    
     plt.show()
 
 
