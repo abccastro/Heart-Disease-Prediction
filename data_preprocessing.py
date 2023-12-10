@@ -115,3 +115,22 @@ def impute_alcohol_drinker(main_df):
 
     return main_df
 
+def impute_sleep_hours(main_df):
+    """
+    Function to fill in missing values in sleep hours column based on the grouping with sex and age category
+    """
+    try:
+        conditions = [
+            (main_df["SleepHours"].isnull()) & (main_df["AgeCategory"].isin(["Age 65 to 69", "Age 70 to 74", "Age 75 to 79", "Age 80 or older"])),
+            (main_df["SleepHours"].isnull()) & ~(main_df["AgeCategory"].isin(["Age 65 to 69", "Age 70 to 74", "Age 75 to 79", "Age 80 or older"]))
+        ]
+
+        choices = [8, 7]
+
+        main_df["SleepHours"] = np.select(conditions, choices, default=main_df["SleepHours"])
+    except Exception as err:
+        print(f"ERROR: {err}")
+
+    return main_df
+
+
