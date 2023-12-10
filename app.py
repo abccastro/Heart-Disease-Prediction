@@ -13,27 +13,43 @@ app=application
 ridge_model=pickle.load(open('models/ridge.pkl', 'rb'))
 standard_scaler=pickle.load(open('models/scaler.pkl', 'rb'))
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
 
+
 @app.route('/predictheartdisease', methods=['Get', 'Post'])
-def predict_datapoint():
+def predict_heart_disease():
+
     if request.method=='POST':
-        Temperature=float(request.form.get('Temperature'))
-        RH=float(request.form.get('RH'))
-        Ws=float(request.form.get('Ws'))
-        Rain=float(request.form.get('Rain'))
-        FFMC=float(request.form.get('FFMC'))
-        DMC=float(request.form.get('DMC'))
-        ISI=float(request.form.get('ISI'))
-        Classes=float(request.form.get('Classes'))
-        Region=float(request.form.get('Region'))
 
-        new_data_sc=standard_scaler.transform([[Temperature,RH,Ws,Rain,FFMC,DMC,ISI,Classes,Region]])
-        result=ridge_model.predict(new_data_sc)
+        try:
+            name = request.form.get('name')
+            age = int(request.form.get('age'))
+            sex = request.form.get('sex')
+            weight = float(request.form.get('weight'))
+            height = float(request.form.get('height'))
+            general_health =  request.form.get('generalhealth')
+            smoker_status = request.form.get('smokerstatus')
+            alcohol_drinker = request.form.get('alcoholdrinker')
+            diabetes = request.form.get('diabetes')
+            stroke = request.form.get('stroke')
+            kidney_disease = request.form.get('kidneydisease')
+            asthma = request.form.get('asthma')
+            cancer = request.form.get('cancer')
+            phyactive = request.form.get('phyactive')
+            difficulty_walking = request.form.get('diffwalking')
+            sleeping_hours = float(request.form.get('sleephours'))
 
-        return render_template('index.html', result=result[0])
+        except Exception as err:
+            return render_template('index.html', result=err)
+
+        # new_data_sc=standard_scaler.transform([[Temperature,RH,Ws,Rain,FFMC,DMC,ISI,Classes,Region]])
+        # result=ridge_model.predict(new_data_sc)
+        # return render_template('index.html', result=result[0])
+
+        return render_template('index.html', result=Name)
     else:
         return render_template('index.html')
 

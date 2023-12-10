@@ -1,6 +1,5 @@
 <html>
    <head>
-
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
    </head>
@@ -8,9 +7,10 @@
       <div style="padding: 30px">
          <img src="https://prnewswire2-a.akamaihd.net/p/1893751/sp/189375100/thumbnail/entry_id/0_do3wqqc5/def_height/2700/def_width/2700/version/100012/type/1" alt="Cardio Insight" width="300" height="60">
       </div>
+      
       <h2  style="font-size: 15px; position: absolute; top: 77px; left: 78px;">Heart Disease Prediction</h2>
       
-      <form action="{{ url_for('predict_datapoint')}}" method="post">
+      <form action="{{ url_for('predict_heart_disease')}}" method="post">
 
          <div class="card" style="width: 70%; margin-left: 15%; margin-bottom: 20px;">
             <div class="card-body">
@@ -18,31 +18,36 @@
 
                <div class="mb-3">
                   <label for="name" class="form-label form-label-sm">Name</label>
-                  <input type="text" id="name" placeholder="Surname, First Name" required="required" class="form-control form-control-sm"/>
+                  <input type="text" id="name" name="name" required="required" class="form-control form-control-sm"/>
                </div>
 
                <div class="mb-3">
-                  <label for="sex">Age</label>
-                  <select class="form-select" id="sex" aria-label="select example">
-                     <option selected>Select Age</option>
+                  <label for="age" class="form-label form-label-sm">Age</label>
+                  <input type="text" id="age" name="age" required="required" class="form-control form-control-sm"/>
+               </div>
+
+               <div class="mb-3">
+                  <label for="sex">Sex</label>
+                  <select class="form-select" id="sex" name="sex" aria-label="select example">
+                     <option selected>Select Sex</option>
                      <option value="female">Female</option>
                      <option value="male">Male</option>
                   </select>
                </div>
 
                <div class="mb-3">
-                  <label for="weight" class="form-label form-label-sm">Weight (in kilogram)</label>
-                  <input type="text" id="weight" required="required" class="form-control form-control-sm"/>
+                  <label for="weight" class="form-label form-label-sm">Weight (in kilograms)</label>
+                  <input type="text" id="weight" name="weight" required="required" class="form-control form-control-sm"/>
                </div>
                
                <div class="mb-3">
                   <label for="height" class="form-label form-label-sm">Height (in meters)</label>
-                  <input type="text" id="height" required="required" class="form-control form-control-sm"/>
+                  <input type="text" id="height" name="height" required="required" class="form-control form-control-sm"/>
                </div>
 
                <div class="mb-3">
                   <label for="generalhealth">General Health</label>
-                  <select class="form-select" id="generalhealth" aria-label="select example">
+                  <select class="form-select" id="generalhealth" name="generalhealth" aria-label="select example">
                      <option selected>Select General Health</option>
                      <option value="poor">Poor</option>
                      <option value="fair">Fair</option>
@@ -61,7 +66,7 @@
 
                <div class="mb-3">
                   <label for="smokerstatus">Are you a smoker?</label>
-                  <select class="form-select" id="smokerstatus" aria-label="select example">
+                  <select class="form-select" id="smokerstatus" name="smokerstatus" aria-label="select example">
                      <option selected>Select Answer</option>
                      <option value="currentsmoker">Current Smoker</option>
                      <option value="formersmoker">Former Smoker</option>
@@ -71,7 +76,7 @@
 
                <div class="mb-3">
                   <label for="alcoholdrinker">Are you an alcoholic drinker?</label>
-                  <select class="form-select" id="alcoholdrinker" aria-label="select example">
+                  <select class="form-select" id="alcoholdrinker" name="alcoholdrinker" aria-label="select example">
                      <option selected>Select Answer</option>
                      <option value="yes">Yes</option>
                      <option value="no">No</option>
@@ -80,7 +85,7 @@
 
                <div class="mb-3">
                   <label for="diabetes">Have you ever had diabetes?</label>
-                  <select class="form-select" id="diabetes" aria-label="select example">
+                  <select class="form-select" id="diabetes" name="diabetes" aria-label="select example">
                      <option selected>Select Answer</option>
                      <option value="yes">Yes</option>
                      <option value="no">No</option>
@@ -89,7 +94,7 @@
 
                <div class="mb-3">
                   <label for="stroke">Have you ever had stroke?</label>
-                  <select class="form-select" id="stroke" aria-label="select example">
+                  <select class="form-select" id="stroke" name="stroke" aria-label="select example">
                      <option selected>Select Answer</option>
                      <option value="yes">Yes</option>
                      <option value="no">No</option>
@@ -98,7 +103,7 @@
 
                <div class="mb-3">
                   <label for="kidneydisease">Have you ever had kidney disease?</label>
-                  <select class="form-select" id="kidneydisease" aria-label="select example">
+                  <select class="form-select" id="kidneydisease" name="kidneydisease" aria-label="select example">
                      <option selected>Select Answer</option>
                      <option value="yes">Yes</option>
                      <option value="no">No</option>
@@ -107,7 +112,7 @@
 
                <div class="mb-3">
                   <label for="asthma">Have you ever had asthma?</label>
-                  <select class="form-select" id="asthma" aria-label="select example">
+                  <select class="form-select" id="asthma" name="asthma" aria-label="select example">
                      <option selected>Select Answer</option>
                      <option value="yes">Yes</option>
                      <option value="no">No</option>
@@ -116,7 +121,7 @@
 
                <div class="mb-3">
                   <label for="cancer">Have you ever had cancer?</label>
-                  <select class="form-select" id="cancer" aria-label="select example">
+                  <select class="form-select" id="cancer" name="cancer" aria-label="select example">
                      <option selected>Select Answer</option>
                      <option value="yes">Yes</option>
                      <option value="no">No</option>
@@ -125,7 +130,7 @@
 
                <div class="mb-3">
                   <label for="phyactive">Are you physically active?</label>
-                  <select class="form-select" id="phyactive" aria-label="select example">
+                  <select class="form-select" id="phyactive" name="phyactive" aria-label="select example">
                      <option selected>Select Answer</option>
                      <option value="yes">Yes</option>
                      <option value="no">No</option>
@@ -134,7 +139,7 @@
 
                <div class="mb-3">
                   <label for="diffwalking">Do you experience difficulty with walking?</label>
-                  <select class="form-select" id="diffwalking" aria-label="select example">
+                  <select class="form-select" id="diffwalking" name="diffwalking" aria-label="select example">
                      <option selected>Select Answer</option>
                      <option value="yes">Yes</option>
                      <option value="no">No</option>
@@ -143,13 +148,13 @@
 
                <div class="mb-3">
                   <label for="sleephours" class="form-label form-label-sm">Average sleeping hours per day</label>
-                  <input type="text" id="sleephours" required="required" class="form-control form-control-sm"/>
+                  <input type="text" id="sleephours" name="sleephours" required="required" class="form-control form-control-sm"/>
                </div>
 
             </div>
          </div>
 
-            <button type="submit" class="btn btn-primary btn-block btn-large"  style="width: 80px; margin-left: calc(50% - 40px)">Submit</button>
+            <button type="submit" class="btn btn-primary btn-block btn-large" style="width: 80px; margin-left: calc(50% - 40px)">Submit</button>
       </form>
       <h2>
            The FWI prediction is {{result}}
