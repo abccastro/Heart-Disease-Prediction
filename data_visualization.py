@@ -18,6 +18,11 @@ import seaborn as sns
 
 
 def show_bar_graph(df, col_, figure_size, title, x_label, y_label, x_tick_rotation=None, bar_color=None):
+    """
+    Function to plot the bar graph
+    """
+    df = df.sort_values(by=col_)
+
     plt.figure(figsize=figure_size)
     
     if bar_color is not None:
@@ -25,12 +30,12 @@ def show_bar_graph(df, col_, figure_size, title, x_label, y_label, x_tick_rotati
     else:
         sns.countplot(x=col_, data=df)
     
-    plt.title(title)
-    plt.xlabel(x_label)
-    plt.ylabel(y_label)
+    plt.title(title, fontweight='bold')
+    plt.xlabel(x_label, fontweight='bold')
+    plt.ylabel(y_label, fontweight='bold')
     
     if x_tick_rotation is not None:
-        plt.xticks(rotation=x_tick_rotation)
+        plt.xticks(rotation=x_tick_rotation, ha='right')
     
     plt.show()
 

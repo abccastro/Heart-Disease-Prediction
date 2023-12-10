@@ -22,6 +22,7 @@ def impute_biometrics(main_df, result_df, col_to_impute, col_impute_val):
 
     return main_df
 
+
 def impute_bmi(df):
     """
     Function to fill in missing values in BMI column
@@ -37,6 +38,7 @@ def impute_bmi(df):
         print(f"ERROR: {err}")
 
     return df
+
 
 def impute_based_on_sws(main_df, result_df, col_to_imputate):
     """
@@ -63,6 +65,7 @@ def impute_based_on_sws(main_df, result_df, col_to_imputate):
 
     return main_df
 
+
 def get_statistical_analysis(df, col1_, col2_, col3_):
     """
     Function to display each group having the maximum record count
@@ -76,6 +79,8 @@ def get_statistical_analysis(df, col1_, col2_, col3_):
         result = pd.DataFrame()  # Return an empty DataFrame in case of an error
 
     return result
+
+    
 def impute_smoking_status(main_df):
     """
     Function to fill in missing values in smoker status based on the grouping with sex and age category
@@ -94,6 +99,7 @@ def impute_smoking_status(main_df):
         print(f"ERROR: {err}")
 
     return main_df
+
 
 def impute_alcohol_drinker(main_df):
     """
@@ -115,6 +121,7 @@ def impute_alcohol_drinker(main_df):
 
     return main_df
 
+
 def impute_sleep_hours(main_df):
     """
     Function to fill in missing values in sleep hours column based on the grouping with sex and age category
@@ -125,9 +132,7 @@ def impute_sleep_hours(main_df):
             (main_df["SleepHours"].isnull()) & ~(main_df["AgeCategory"].isin(["Age 65 to 69", "Age 70 to 74", "Age 75 to 79", "Age 80 or older"]))
         ]
 
-        choices = [8, 7]
-
-        main_df["SleepHours"] = np.select(conditions, choices, default=main_df["SleepHours"])
+        main_df["SleepHours"] = np.select([8, 7], choices, default=main_df["SleepHours"])
     except Exception as err:
         print(f"ERROR: {err}")
 
