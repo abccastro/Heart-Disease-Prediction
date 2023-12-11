@@ -26,7 +26,7 @@ def predict_heart_disease():
 
         try:
             name = request.form.get('name')
-            age = int(request.form.get('age'))
+            # age = int(request.form.get('age'))
             sex = request.form.get('sex')
             weight = float(request.form.get('weight'))
             height = float(request.form.get('height'))
@@ -47,9 +47,13 @@ def predict_heart_disease():
 
         # new_data_sc=standard_scaler.transform([[Temperature,RH,Ws,Rain,FFMC,DMC,ISI,Classes,Region]])
         # result=ridge_model.predict(new_data_sc)
-        # return render_template('index.html', result=result[0])
+        # return render_template('index.html', result=result[0])]
 
-        return render_template('index.html', result=Name)
+        msg_name = f"Hi {name},"
+        message = f"The probability that you'll have heart disease is 2.03%. You are healthy!"
+
+        return render_template('index.html', name=msg_name, message=message, img="https://c.tenor.com/MzMjocR0eIEAAAAd/tenor.gif")
+        # https://clipart-library.com/2023/sick-heart-pain.gif
     else:
         return render_template('index.html')
 
