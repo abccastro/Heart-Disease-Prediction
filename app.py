@@ -125,15 +125,15 @@ def predict_heart_disease():
                 kidney_disease_input,
                 diabetes_input,
                 diffwalking_input,
+                alcohol_drinker_input,
+                general_health_input[4],
+                general_health_input[1],
+                general_health_input[2],
+                general_health_input[0],
+                general_health_input[3],
                 smoker_status[0], 
                 smoker_status[1], 
                 smoker_status[2],
-                alcohol_drinker_input,
-                general_health_input[0],
-                general_health_input[1],
-                general_health_input[2],
-                general_health_input[3],
-                general_health_input[4],
                 age_health_input[0],
                 age_health_input[1],
                 age_health_input[2],
@@ -152,8 +152,6 @@ def predict_heart_disease():
             #################################################
             # Predicting Heart Disease
             #################################################
-            # prediction_prob = round(ann_model.predict(new_data_sc), 2)
-            # prediction = (prediction_prob > 0.5).astype(int)
 
             prediction = lr_model.predict(new_data_sc)[0]
             prediction_prob = round(lr_model.predict_proba(new_data_sc)[0][1] * 100, 2)
@@ -161,6 +159,7 @@ def predict_heart_disease():
             #################################################
             # Reponse
             #################################################
+
             msg_name = f"Hi {name},"
 
             if prediction == 0:
@@ -171,7 +170,7 @@ def predict_heart_disease():
                 image_input = "https://clipart-library.com/2023/sick-heart-pain.gif"
                 
         except Exception as err:
-            print(f"[ERROR]: {err}")
+            return render_template('index.html', name=msg_name, message=err)
 
         return render_template('index.html', name=msg_name, message=message, img=image_input)
     else:
