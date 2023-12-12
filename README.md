@@ -1,6 +1,6 @@
 # Heart Disease Prediction
 
-This program has used logistic regression, decision tree classifier and artificial intelligence algorithms with cross-validation to develop and train the models that could estimate the likelihood of heart disease based on important indicators associated with the condition. The model was then evaluated for its accuracy, precision, recall and auc scores. The model with highest scores in evaluation metrics is the one incorporated in the application to predict heart disease.
+This program has used logistic regression, decision tree classifier and artificial intelligence algorithms with cross-validation to develop and train the models that could estimate the likelihood of heart disease based on important indicators associated with the condition. The models are then evaluated for its accuracy, precision, recall and auc scores. Logistic Model, which exhibits the highest scores in evaluation metrics, is selected for integration into the application for predicting heart disease.
 
 - Sex (Male or Female)
 - Age Category
@@ -23,7 +23,11 @@ This program has used logistic regression, decision tree classifier and artifici
 - Difficulty walking or climbing stairs
 
 
-The dataset were obtained from the website https://www.kaggle.com/datasets/kamilpytlak/personal-key-indicators-of-heart-disease. We created synthetic samples as well to balance the data distribution among the predictor class.
+## General info
+
+The dataset selected for this project is obtained from the Behavioral Risk Factor Surveillance System (BRFSS) by the CDC. This health survey, operational since 1984, annually surveys more than 400,000 adults across all U.S. states and territories. The dataset includes information for 2022 and comprises vital factors associated with heart disease, such as diabetes, obesity, lack of physical activity, and excessive alcohol consumption.
+
+Link of the dataset: https://www.kaggle.com/datasets/kamilpytlak/personal-key-indicators-of-heart-disease
 
 ## Installation
 
@@ -35,8 +39,9 @@ pip install numpy
 pip install pandas
 pip install matplotlib
 pip install seaborn
-pip install sklearn
+pip install scikit-learn
 pip install imblearn
+pip install tensorflow
 ```
 
 For web application:
@@ -44,13 +49,22 @@ For web application:
 pip install numpy
 pip install pandas
 pip install flask
+pip install scikit-learn
+pip install gunicorn (for Render)
 ```
 
 ## Program Execution
-Launch the heart disease application
+
+The project was deployed in Render to make it publicly available to the users. 
+
+Link of the application: https://cardio-insight.onrender.com/predictheartdisease
+
+To launch the heart disease application in the local machine:
 ```bash
 python app.py
 ```
+
+Note: Make sure to install all necessary Python libraries before executing the program
 
 ## Members
 - Auradee Castro
