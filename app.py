@@ -4,8 +4,6 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from flask import Flask, request, jsonify, render_template
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Flatten, Dense, BatchNormalization
 
 application=Flask(__name__)
 app=application
