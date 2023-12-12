@@ -57,7 +57,7 @@ pip install gunicorn (for Render)
 
 The project was deployed in Render to make it publicly available to the users. 
 
-Link of the application: https://cardio-insight.onrender.com/predictheartdisease
+Link of the application: https://cardio-insight.onrender.com
 
 To launch the heart disease application in the local machine:
 ```bash
