@@ -2,6 +2,9 @@
 
 This program has used logistic regression, decision tree classifier and artificial intelligence algorithms with cross-validation to develop and train the models that could estimate the likelihood of heart disease based on important indicators associated with the condition. The models are then evaluated for its accuracy, precision, recall and auc scores. Logistic Model, which exhibits the highest scores in evaluation metrics, is selected for integration into the application for predicting heart disease.
 
+![image](https://github.com/abccastro/Heart-Disease-Prediction-using-ML-and-DL/assets/113273491/632c88fa-333b-4ab0-a6f4-3563a2ec3706)
+
+Relevant parameters/input of the application:
 - Sex (Male or Female)
 - Age Category
 - Body Mass Index (BMI)
@@ -21,7 +24,6 @@ This program has used logistic regression, decision tree classifier and artifici
 - Have/had a kidney disease (excluding kidney stones, bladder infection or incontinence)
 - Doing physical activity or exercise during the past 30 days other than the regular job
 - Difficulty walking or climbing stairs
-
 
 ## General info
 
